@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "adk-sdlc"
+version = "0.1.0"
+description = "An ADK-based SDLC automation chain for software development projects"
+authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.13"
+adk = "^0.1.0"
+python-dotenv = "^1.0.0"
+pydantic = "^2.0.0"
+vertexai = "^1.65.0"
+requests = "^2.31.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
