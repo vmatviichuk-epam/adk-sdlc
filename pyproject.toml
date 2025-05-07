@@ -6,8 +6,8 @@ authors = ["Your Name <your.email@example.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.13"
-adk = "^0.1.0"
+python = ">=3.9,<3.14"
+google-adk = "^0.0.5"
 python-dotenv = "^1.0.0"
 pydantic = "^2.0.0"
 vertexai = "^1.65.0"

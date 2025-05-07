@@ -7,40 +7,22 @@ from ...pr.agent import pr_agent as pr_agent_instance
 
 def requirements_agent(task: str) -> Dict[str, Any]:
     """
-    Invokes the requirements agent to process JIRA tickets and requirements.
+    Invokes the requirements agent to process mock user stories and requirements.
     
     Args:
-        task: Description of the task or JIRA ticket ID
+        task: Command or task to execute with the requirements agent
         
     Returns:
-        A dictionary containing the requirements analysis
+        A dictionary containing the requirements analysis or mock user stories
     """
     try:
-        # If task is "list_my_tickets", call the list_open_tickets tool
-        if task == "list_my_tickets":
-            response = req_agent.run({"command": "list_my_tickets"})
-            return {
-                "success": True,
-                "tickets": response,
-                "message": "Mock user stories retrieved successfully"
-            }
-        # If task starts with "fetch_jira_ticket", extract the ticket ID and call get_ticket_details
-        elif task.startswith("fetch_jira_ticket"):
-            ticket_id = task.split("ticket_id=")[1].strip()
-            response = req_agent.run({"command": "fetch_jira_ticket", "ticket_id": ticket_id})
-            return {
-                "success": True,
-                "ticket": response,
-                "message": f"Mock user story {ticket_id} details retrieved successfully"
-            }
-        else:
-            # For any other task, call the requirements agent with the task
-            response = req_agent.run(task)
-            return {
-                "success": True,
-                "requirements": response,
-                "message": "Requirements analysis completed successfully"
-            }
+        # Call the requirements agent with the task
+        response = req_agent.run(task)
+        return {
+            "success": True,
+            "response": response,
+            "message": "Requirements analysis completed successfully"
+        }
     except Exception as e:
         return {
             "success": False,

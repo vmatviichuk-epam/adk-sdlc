@@ -5,21 +5,25 @@ from google.adk.tools import FunctionTool
 # Mock data for JIRA operations
 MOCK_TICKETS = [
     {
-        "key": "ASCII-1",
-        "summary": "Implement basic ASCII art conversion",
+        "key": "TEST-1",
+        "summary": "Implement a string reverse function in Python",
         "status": "Open",
         "description": """
-As a user, I want to convert images to ASCII art.
+As a developer, I want to have a utility function that will reverse a string in Python.
 
 Requirements:
-- Support PNG and JPEG formats
-- Allow adjusting output size
-- Support grayscale conversion
+- Create a function that takes a string input and returns the reversed string
+- Handle empty strings and single-character strings properly
+- Ensure Unicode characters are handled correctly
+- Implement the function efficiently (O(n) time complexity)
+- Write comprehensive unit tests for the function
 
 Acceptance Criteria:
-1. User can upload an image
-2. User can select output size
-3. User can download ASCII art result
+1. Function correctly reverses any input string
+2. Edge cases (empty string, single character) are handled properly
+3. Unicode characters are preserved correctly
+4. Performance is optimal (O(n) time complexity)
+5. Unit tests cover all required functionality
 """,
         "type": "Story",
         "priority": "High",
@@ -29,21 +33,25 @@ Acceptance Criteria:
         "updated": "2024-05-07T10:30:00.000Z"
     },
     {
-        "key": "ASCII-2",
-        "summary": "Add color support to ASCII art",
+        "key": "TEST-2",
+        "summary": "Implement a Python function to display current time + 1 hour",
         "status": "Open",
         "description": """
-As a user, I want to generate colored ASCII art.
+As a developer, I want to have a utility function that will display the current time plus one hour.
 
 Requirements:
-- Support RGB color output
-- Allow color intensity adjustment
-- Maintain readability
+- Create a function that returns the current time plus one hour
+- Use Python's datetime module for time handling
+- Handle timezone considerations
+- Format the output in a readable way
+- Write comprehensive unit tests for the function
 
 Acceptance Criteria:
-1. ASCII art preserves original colors
-2. User can adjust color intensity
-3. Output is readable on both light and dark backgrounds
+1. Function returns current time + 1 hour correctly
+2. Timezone handling is implemented properly
+3. Output format is clear and readable
+4. Edge cases (day/month/year boundaries) are handled correctly
+5. Unit tests cover all required functionality
 """,
         "type": "Story",
         "priority": "Medium",
@@ -53,24 +61,28 @@ Acceptance Criteria:
         "updated": "2024-05-07T11:15:00.000Z"
     },
     {
-        "key": "ASCII-3",
-        "summary": "Add export options",
+        "key": "TEST-3",
+        "summary": "Implement a Java function to multiply two numbers",
         "status": "Open",
         "description": """
-As a user, I want to export ASCII art in different formats.
+As a developer, I want to have a utility function in Java that will multiply two numbers.
 
 Requirements:
-- Support TXT format
-- Support HTML format with styling
-- Support PDF export
+- Create a function that takes two numbers as input and returns their product
+- Handle different numeric types (int, double, etc.)
+- Implement proper error handling
+- Write comprehensive unit tests for the function
+- Document the function with JavaDoc
 
 Acceptance Criteria:
-1. User can export as plain text
-2. User can export as styled HTML
-3. User can export as PDF with preserved formatting
+1. Function correctly multiplies two numbers
+2. Different numeric types are handled properly
+3. Error cases (null inputs, invalid numbers) are handled gracefully
+4. JavaDoc documentation is complete and clear
+5. Unit tests cover all required functionality
 """,
         "type": "Story",
-        "priority": "Low",
+        "priority": "Medium",
         "assignee": "John Doe",
         "reporter": "Jane Smith",
         "created": "2024-05-07T12:00:00.000Z",
