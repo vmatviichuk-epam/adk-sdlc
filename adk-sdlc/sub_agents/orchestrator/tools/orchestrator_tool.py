@@ -1,5 +1,9 @@
 from typing import Dict, Any
 from google.adk.tools import FunctionTool
+from ...requirements.agent import requirements_agent as req_agent
+from ...implementation.agent import implementation_agent as impl_agent
+from ...testing.agent import testing_agent as test_agent
+from ...pr.agent import pr_agent as pr_agent_instance
 
 def requirements_agent(task: str) -> Dict[str, Any]:
     """
@@ -12,18 +16,31 @@ def requirements_agent(task: str) -> Dict[str, Any]:
         A dictionary containing the requirements analysis
     """
     try:
-        return {
-            "success": True,
-            "requirements": {
-                "description": "Convert images to ASCII art",
-                "features": [
-                    "Input image processing",
-                    "ASCII character mapping",
-                    "Output formatting"
-                ]
-            },
-            "message": "Requirements analysis completed successfully"
-        }
+        # If task is "list_my_tickets", call the list_open_tickets tool
+        if task == "list_my_tickets":
+            response = req_agent.run({"command": "list_my_tickets"})
+            return {
+                "success": True,
+                "tickets": response,
+                "message": "Mock user stories retrieved successfully"
+            }
+        # If task starts with "fetch_jira_ticket", extract the ticket ID and call get_ticket_details
+        elif task.startswith("fetch_jira_ticket"):
+            ticket_id = task.split("ticket_id=")[1].strip()
+            response = req_agent.run({"command": "fetch_jira_ticket", "ticket_id": ticket_id})
+            return {
+                "success": True,
+                "ticket": response,
+                "message": f"Mock user story {ticket_id} details retrieved successfully"
+            }
+        else:
+            # For any other task, call the requirements agent with the task
+            response = req_agent.run(task)
+            return {
+                "success": True,
+                "requirements": response,
+                "message": "Requirements analysis completed successfully"
+            }
     except Exception as e:
         return {
             "success": False,
@@ -42,11 +59,11 @@ def implementation_agent(requirements: Dict[str, Any]) -> Dict[str, Any]:
         A dictionary containing the generated code
     """
     try:
+        # Call the implementation agent with the requirements
+        response = impl_agent.run(requirements)
         return {
             "success": True,
-            "code": {
-                "main.py": "# Implementation code will be generated here"
-            },
+            "code": response,
             "message": "Code implementation completed successfully"
         }
     except Exception as e:
@@ -67,11 +84,11 @@ def testing_agent(implementation: Dict[str, Any]) -> Dict[str, Any]:
         A dictionary containing the generated tests
     """
     try:
+        # Call the testing agent with the implementation
+        response = test_agent.run(implementation)
         return {
             "success": True,
-            "tests": {
-                "test_main.py": "# Test code will be generated here"
-            },
+            "tests": response,
             "message": "Test generation completed successfully"
         }
     except Exception as e:
@@ -93,13 +110,11 @@ def pr_agent(implementation: Dict[str, Any], tests: Dict[str, Any]) -> Dict[str,
         A dictionary containing the PR details
     """
     try:
+        # Call the PR agent with the implementation and tests
+        response = pr_agent_instance.run({"implementation": implementation, "tests": tests})
         return {
             "success": True,
-            "pr": {
-                "title": "Add ASCII art conversion feature",
-                "branch": "feature/ascii-art",
-                "files": ["main.py", "test_main.py"]
-            },
+            "pr": response,
             "message": "Pull request created successfully"
         }
     except Exception as e:
