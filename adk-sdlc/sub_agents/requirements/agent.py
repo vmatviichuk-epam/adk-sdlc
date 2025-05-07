@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 
 # Import tools
 from .tools.jira_tool import get_ticket_details, list_open_tickets
-from .tools.requirements_tool import generate_requirements_tool
 
 # Import prompts
 from .prompt import return_instructions_requirements_agent
@@ -19,7 +18,6 @@ requirements_agent = Agent(
     instruction=return_instructions_requirements_agent(),
     tools=[
         list_open_tickets,
-        get_ticket_details,
-        generate_requirements_tool
+        get_ticket_details
     ]
 )
