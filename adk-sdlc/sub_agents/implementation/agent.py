@@ -3,7 +3,7 @@ from google.adk.agents import Agent
 from dotenv import load_dotenv
 
 # Import tools
-from .tools.implementation_tool import generate_implementation
+from .tools.implementation_tool import generate_implementation_tool
 
 # Import prompts
 from .prompt import return_instructions_implementation_agent
@@ -17,6 +17,6 @@ implementation_agent = Agent(
     description="Agent that generates code implementations based on requirements",
     instruction=return_instructions_implementation_agent(),
     tools=[
-        generate_implementation,
+        generate_implementation_tool,
     ]
 )

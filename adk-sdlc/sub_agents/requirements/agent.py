@@ -3,7 +3,7 @@ from google.adk.agents import Agent
 from dotenv import load_dotenv
 
 # Import tools
-from .tools.jira_tool import get_ticket_details, list_open_tickets
+from .tools.jira_tool import get_ticket_details_tool, list_open_tickets_tool
 
 # Import prompts
 from .prompt import return_instructions_requirements_agent
@@ -17,7 +17,7 @@ requirements_agent = Agent(
     description="Agent that fetches ticket information and extracts implementation requirements",
     instruction=return_instructions_requirements_agent(),
     tools=[
-        list_open_tickets,
-        get_ticket_details
+        list_open_tickets_tool,
+        get_ticket_details_tool
     ]
 )

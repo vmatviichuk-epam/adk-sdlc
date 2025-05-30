@@ -77,4 +77,4 @@ numpy>=1.21.0
         }
 
 # Create the FunctionTool
-generate_implementation = FunctionTool(generate_implementation)
+generate_implementation_tool = FunctionTool(generate_implementation)

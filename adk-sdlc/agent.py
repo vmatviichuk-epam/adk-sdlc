@@ -17,7 +17,7 @@ load_dotenv()
 # Create the main orchestrator agent
 orchestrator_agent = Agent(
     model=os.environ.get("VERTEX_MODEL", "gemini-1.5-pro"),
-    name="ascii_art_sdlc_orchestrator",
+    name="adk_sdlc_orchestrator",
     instruction=return_instructions_orchestrator(),
     tools=[
         # Sub-agents wrapped with AgentTool

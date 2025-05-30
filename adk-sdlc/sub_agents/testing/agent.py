@@ -3,7 +3,7 @@ from google.adk.agents import Agent
 from dotenv import load_dotenv
 
 # Import tools
-from .tools.testing_tool import generate_tests
+from .tools.testing_tool import generate_tests_tool
 
 # Import prompts
 from .prompt import return_instructions_testing_agent
@@ -17,6 +17,6 @@ testing_agent = Agent(
     description="Agent that generates tests for code implementations",
     instruction=return_instructions_testing_agent(),
     tools=[
-        generate_tests,
+        generate_tests_tool,
     ]
 )

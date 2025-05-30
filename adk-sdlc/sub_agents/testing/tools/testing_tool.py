@@ -123,3 +123,6 @@ pytest==7.3.1
    ```
 """
     }
+
+# Create the FunctionTool
+generate_tests_tool = FunctionTool(generate_tests)
